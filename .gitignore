@@ -24,7 +24,7 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
+/MANIFEST
 
 # Virtual Environments
 venv/
@@ -75,6 +75,8 @@ data/processed/*
 !data/processed/.gitkeep
 data/benchmarks/*
 !data/benchmarks/.gitkeep
+data/manifest/*
+!data/manifest/.gitkeep
 
 # Machine Learning Models & Checkpoints
 models/*

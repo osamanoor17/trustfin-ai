@@ -4,7 +4,7 @@
 [![Python: 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)]()
-[![Status: Phase 0 — Foundation](https://img.shields.io/badge/Status-Phase%200%20%E2%80%94%20Foundation-informational.svg)]()
+[![Status: Phase 1A — Corpus Specification](https://img.shields.io/badge/Status-Phase%201A%20%E2%80%94%20Corpus%20Specification-informational.svg)]()
 
 TrustFin AI is an open-source research project investigating **trustworthy multilingual Retrieval-Augmented Generation (RAG)** for financial, banking, and regulatory documents, initially focused on **English**, **Urdu**, and **Roman Urdu**.
 
@@ -14,11 +14,11 @@ This repository is **not** a generic consumer chatbot wrapper. It is designed as
 
 ## 📌 Current Development Status
 
-> **Current Phase: Phase 0 — Foundation**
->
-> The project is currently in its architectural foundation phase. The current codebase establishes the lightweight software scaffolding, API routing, configuration management, research questions, methodology outline, and testing baseline.
-> 
-> *RAG pipelines, language model integrations, vector databases, and dense retrieval models are intentionally deferred to subsequent research phases to preserve a lightweight local environment.*
+- **Phase 0 — Foundation:** **Complete** (Repository architecture, API base, config, health check, testing baseline, research scaffolding).
+- **Phase 1A — Corpus Specification:** **Complete** (Research dataset design, metadata schema, target categories, authority hierarchy, dataset card, data governance).
+
+> [!NOTE]
+> *Corpus design and metadata schemas are formally established. Live document acquisition, crawling, RAG pipelines, and ML models are deferred to subsequent research phases to maintain a lightweight environment.*
 
 ---
 
@@ -200,8 +200,9 @@ The planned phases of the TrustFin AI research lifecycle are structured as follo
 
 | Phase | Description | Status | Target Environment |
 |---|---|---|---|
-| **Phase 0 — Foundation** | Project architecture, API base, config, research questions, methodology scaffolding | **CURRENT** | Local Machine |
-| **Phase 1 — Data Collection & Corpus Preparation** | Multilingual financial document acquisition, parsing, OCR, and benchmark dataset curation | Planned | Local / Scripts |
+| **Phase 0 — Foundation** | Project architecture, API base, config, research questions, methodology scaffolding | **Complete** | Local Machine |
+| **Phase 1A — Corpus Specification** | Research dataset design, metadata schema, target categories, authority hierarchy, data governance | **Complete** | Local Machine |
+| **Phase 1B — Document Acquisition & Ingestion** | Primary document collection, SHA-256 integrity hashing, and JSONL manifest compilation | Planned | Local / Scripts |
 | **Phase 2 — Baseline Retrieval & Evaluation** | Implementation of BM25, dense bi-encoder retrieval, and cross-lingual retrieval benchmarks | Planned | Local / Colab |
 | **Phase 3 — Hybrid Retrieval & Reranking** | Sparse+dense fusion (RRF), cross-encoder reranking, and tabular retrieval optimization | Planned | Colab / Kaggle GPU |
 | **Phase 4 — Generation & Evidence Grounding** | Open-weight LLM generation, citation attribution, and evidence verification pipelines | Planned | Colab / Kaggle GPU |
