@@ -79,6 +79,7 @@ data/manifest/*
 !data/manifest/.gitkeep
 !data/manifest/*.example.jsonl
 !data/manifest/sbp_discovery_candidates.jsonl
+!data/manifest/sbp_acquisition_manifest.jsonl
 
 # Machine Learning Models & Checkpoints
 models/*
