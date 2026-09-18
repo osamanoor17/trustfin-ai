@@ -81,6 +81,7 @@ data/manifest/*
 !data/manifest/sbp_discovery_candidates.jsonl
 !data/manifest/sbp_acquisition_manifest.jsonl
 !data/manifest/sbp_processed_manifest.jsonl
+!data/manifest/sbp_chunking_manifest.jsonl
 
 # Machine Learning Models & Checkpoints
 models/*

@@ -135,6 +135,8 @@ def test_sha256_integrity_rejection(monkeypatch, tmp_path):
 
     monkeypatch.setattr("scripts.parse_documents.ACQUISITION_MANIFEST_PATH", manifest_file)
     monkeypatch.setattr("scripts.parse_documents.PROJECT_ROOT", tmp_path)
+    monkeypatch.setattr("scripts.parse_documents.PROCESSED_PAGE_CORPUS_PATH", tmp_path / "sbp_pages.jsonl")
+    monkeypatch.setattr("scripts.parse_documents.PROCESSED_MANIFEST_PATH", tmp_path / "sbp_processed_manifest.jsonl")
 
     with pytest.raises(ValueError, match="SHA-256 mismatch"):
         run_parsing_pipeline()
@@ -154,6 +156,8 @@ def test_only_acquired_records_eligible(monkeypatch, tmp_path):
 
     monkeypatch.setattr("scripts.parse_documents.ACQUISITION_MANIFEST_PATH", manifest_file)
     monkeypatch.setattr("scripts.parse_documents.PROJECT_ROOT", tmp_path)
+    monkeypatch.setattr("scripts.parse_documents.PROCESSED_PAGE_CORPUS_PATH", tmp_path / "sbp_pages.jsonl")
+    monkeypatch.setattr("scripts.parse_documents.PROCESSED_MANIFEST_PATH", tmp_path / "sbp_processed_manifest.jsonl")
 
     pages, manifest_entries = run_parsing_pipeline()
     assert len(pages) == 0

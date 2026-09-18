@@ -8,6 +8,7 @@ from app.schemas.document import (
     ScriptType,
     SourceTier,
 )
+from app.schemas.chunk import ChunkingManifestEntry, ChunkRecord
 from app.schemas.health import HealthResponse
 from app.schemas.processed_document import (
     ExtractionStatus,
@@ -26,4 +27,6 @@ __all__ = [
     "ExtractionStatus",
     "ProcessedPage",
     "ProcessedDocumentManifestEntry",
+    "ChunkRecord",
+    "ChunkingManifestEntry",
 ]
