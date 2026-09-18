@@ -9,6 +9,11 @@ from app.schemas.document import (
     SourceTier,
 )
 from app.schemas.health import HealthResponse
+from app.schemas.processed_document import (
+    ExtractionStatus,
+    ProcessedDocumentManifestEntry,
+    ProcessedPage,
+)
 
 __all__ = [
     "HealthResponse",
@@ -18,4 +23,7 @@ __all__ = [
     "SourceTier",
     "LanguageCode",
     "ScriptType",
+    "ExtractionStatus",
+    "ProcessedPage",
+    "ProcessedDocumentManifestEntry",
 ]

@@ -4,7 +4,7 @@
 [![Python: 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)]()
-[![Status: Phase 1B.2 — Document Discovery](https://img.shields.io/badge/Status-Phase%201B.2%20%E2%80%94%20Document%20Discovery-informational.svg)]()
+[![Status: Phase 1C — Document Parsing & Normalization](https://img.shields.io/badge/Status-Phase%201C%20%E2%80%94%20Document%20Parsing%20%26%20Normalization-informational.svg)]()
 
 TrustFin AI is an open-source research project investigating **trustworthy multilingual Retrieval-Augmented Generation (RAG)** for financial, banking, and regulatory documents, initially focused on **English**, **Urdu**, and **Roman Urdu**.
 
@@ -18,9 +18,11 @@ This repository is **not** a generic consumer chatbot wrapper. It is designed as
 - **Phase 1A — Corpus Specification:** **Complete** (Research dataset design, metadata schema, target categories, authority hierarchy, dataset card, data governance).
 - **Phase 1B.1 — Source Registry & Acquisition Planning:** **Complete** (Official source registry, candidate institution catalog, acquisition workflow, status lifecycle, selection log schema).
 - **Phase 1B.2 — Verified Document Discovery & Selection:** **Complete** (Official SBP candidate discovery inventory, entry point validation, candidate manifest compilation).
+- **Phase 1B.3 — Controlled Document Acquisition & Identity Verification:** **Complete** (Official SBP PDF HTTP acquisition, SHA-256 binary integrity hashing, two-stage semantic identity verification).
+- **Phase 1C — Document Parsing & Normalization:** **Complete** (PyMuPDF page-aware extraction, conservative normalization, 142 pages extracted across 4 trusted SBP pilot documents, reproduciblity manifest).
 
 > [!NOTE]
-> *Corpus design, metadata schemas, source registry, and acquisition planning are formally established. Live document acquisition, crawling, RAG pipelines, and ML models are deferred to subsequent research phases to maintain a lightweight environment.*
+> *Corpus design, metadata schemas, source registry, acquisition pipeline, and page-aware document normalization are formally established. Live RAG pipelines, vector databases, chunking, embeddings, and LLM calls are deferred to subsequent research phases to maintain a lightweight environment.*
 
 ---
 
@@ -206,7 +208,8 @@ The planned phases of the TrustFin AI research lifecycle are structured as follo
 | **Phase 1A — Corpus Specification** | Research dataset design, metadata schema, target categories, authority hierarchy, data governance | **Complete** | Local Machine |
 | **Phase 1B.1 — Source Registry & Acquisition Plan** | Candidate authoritative source catalog, acquisition workflow SOPs, status lifecycle | **Complete** | Local Machine |
 | **Phase 1B.2 — Document Discovery & Selection** | Candidate SBP document discovery, entry point verification, candidate manifest compilation | **Complete** | Local Machine |
-| **Phase 1C — Document Acquisition & Ingestion** | Primary document collection, SHA-256 integrity hashing, and raw dataset archival | Planned | Local / Scripts |
+| **Phase 1B.3 — Acquisition & Identity Verification** | Official PDF acquisition, SHA-256 binary validation, multi-signal identity verification | **Complete** | Local Machine |
+| **Phase 1C — Document Parsing & Normalization** | PyMuPDF page-aware text extraction, conservative normalization, reproducibility manifest | **Complete** | Local Machine |
 | **Phase 2 — Baseline Retrieval & Evaluation** | Implementation of BM25, dense bi-encoder retrieval, and cross-lingual retrieval benchmarks | Planned | Local / Colab |
 | **Phase 3 — Hybrid Retrieval & Reranking** | Sparse+dense fusion (RRF), cross-encoder reranking, and tabular retrieval optimization | Planned | Colab / Kaggle GPU |
 | **Phase 4 — Generation & Evidence Grounding** | Open-weight LLM generation, citation attribution, and evidence verification pipelines | Planned | Colab / Kaggle GPU |
