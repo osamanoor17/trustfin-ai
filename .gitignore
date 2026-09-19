@@ -75,6 +75,7 @@ data/processed/*
 !data/processed/.gitkeep
 data/benchmarks/*
 !data/benchmarks/.gitkeep
+!data/benchmarks/finurdu_pilot_v0_1.jsonl
 data/manifest/*
 !data/manifest/.gitkeep
 !data/manifest/*.example.jsonl

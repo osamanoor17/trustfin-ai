@@ -15,6 +15,15 @@ from app.schemas.processed_document import (
     ProcessedDocumentManifestEntry,
     ProcessedPage,
 )
+from app.schemas.benchmark import (
+    BenchmarkAnswerability,
+    BenchmarkDifficulty,
+    BenchmarkLanguage,
+    BenchmarkQueryType,
+    BenchmarkRecord,
+    BenchmarkScript,
+    EvidenceSpan,
+)
 
 __all__ = [
     "HealthResponse",
@@ -29,4 +38,12 @@ __all__ = [
     "ProcessedDocumentManifestEntry",
     "ChunkRecord",
     "ChunkingManifestEntry",
+    "BenchmarkLanguage",
+    "BenchmarkScript",
+    "BenchmarkAnswerability",
+    "BenchmarkDifficulty",
+    "BenchmarkQueryType",
+    "EvidenceSpan",
+    "BenchmarkRecord",
 ]
+
