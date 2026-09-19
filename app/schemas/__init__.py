@@ -31,6 +31,15 @@ from app.schemas.retrieval import (
     SingleQueryRetrievalRecord,
     StrategyEvaluationSummary,
 )
+from app.schemas.dense import (
+    DenseMetricBreakdown,
+    DenseModelConfig,
+    DenseRetrievalResultItem,
+    DenseStrategyEvaluationSummary,
+    QueryTruncationStatRecord,
+    SingleQueryDenseRecord,
+    TruncationStatRecord,
+)
 
 __all__ = [
     "HealthResponse",
@@ -57,6 +66,13 @@ __all__ = [
     "MetricBreakdown",
     "StrategyEvaluationSummary",
     "ConceptRankComparison",
+    "DenseModelConfig",
+    "TruncationStatRecord",
+    "QueryTruncationStatRecord",
+    "DenseRetrievalResultItem",
+    "SingleQueryDenseRecord",
+    "DenseMetricBreakdown",
+    "DenseStrategyEvaluationSummary",
 ]
 
 
