@@ -9,7 +9,7 @@ from app.schemas.dense import DenseModelConfig, QueryTruncationStatRecord, Trunc
 FROZEN_DENSE_MODELS: Dict[str, DenseModelConfig] = {
     "multilingual-e5-base": DenseModelConfig(
         model_id="intfloat/multilingual-e5-base",
-        model_revision="d7dbd2363595f4e19f7f45c8f85f8c65f97332f1",
+        model_revision="d128750597153bb5987e10b1c3493a34e5a4502a",
         embedding_dimension=768,
         max_sequence_length=512,
         normalized=True,
@@ -20,7 +20,7 @@ FROZEN_DENSE_MODELS: Dict[str, DenseModelConfig] = {
     ),
     "bge-m3": DenseModelConfig(
         model_id="BAAI/bge-m3",
-        model_revision="5617a9f61b028005a4858fdac845db4034724a87",
+        model_revision="5617a9f61b028005a4858fdac845db406aefb181",
         embedding_dimension=1024,
         max_sequence_length=8192,
         normalized=True,
@@ -31,7 +31,7 @@ FROZEN_DENSE_MODELS: Dict[str, DenseModelConfig] = {
     ),
     "paraphrase-multilingual-mpnet-base-v2": DenseModelConfig(
         model_id="sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
-        model_revision="79f238270bbb1999f3659424750eed546059d18f",
+        model_revision="4328cf26390c98c5e3c738b4460a05b95f4911f5",
         embedding_dimension=768,
         max_sequence_length=128,
         normalized=True,

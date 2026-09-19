@@ -301,14 +301,19 @@ def test_query_truncation_stat_aggregation_logic():
 
 
 def test_model_config_exact_revision_sha_preservation():
-    """Verify all 3 model configs preserve exact Hugging Face commit revision SHAs."""
+    """Verify all 3 model configs preserve exact Hugging Face model IDs and immutable commit revision SHAs."""
     e5 = FROZEN_DENSE_MODELS["multilingual-e5-base"]
     bge = FROZEN_DENSE_MODELS["bge-m3"]
     mpnet = FROZEN_DENSE_MODELS["paraphrase-multilingual-mpnet-base-v2"]
 
-    assert e5.model_revision == "d7dbd2363595f4e19f7f45c8f85f8c65f97332f1"
-    assert bge.model_revision == "5617a9f61b028005a4858fdac845db4034724a87"
-    assert mpnet.model_revision == "79f238270bbb1999f3659424750eed546059d18f"
+    assert e5.model_id == "intfloat/multilingual-e5-base"
+    assert e5.model_revision == "d128750597153bb5987e10b1c3493a34e5a4502a"
+
+    assert bge.model_id == "BAAI/bge-m3"
+    assert bge.model_revision == "5617a9f61b028005a4858fdac845db406aefb181"
+
+    assert mpnet.model_id == "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
+    assert mpnet.model_revision == "4328cf26390c98c5e3c738b4460a05b95f4911f5"
 
 
 def test_e5_formatting_query_passage_prefixes():

@@ -13,9 +13,13 @@ The baseline experiment evaluates exactly three pre-selected, publicly available
 
 | Model Candidate | Hugging Face ID | Revision Commit SHA | Dim | Max Tokens | Similarity Metric | Query Prefix | Passage Prefix | Role |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Multilingual-E5-Base** | `intfloat/multilingual-e5-base` | `d7dbd236...` | 768 | 512 | Cosine (Dot product on $L_2$ norm) | `"query: "` | `"passage: "` | Retrieval-specialized multilingual baseline |
-| **BGE-M3** | `BAAI/bge-m3` | `5617a9f6...` | 1024 | 8192 | Cosine (Dot product on $L_2$ norm) | `""` | `""` | Multilingual dense retrieval / multi-granularity baseline (dense embeddings only) |
-| **Paraphrase-MPNet-Multi** | `sentence-transformers/paraphrase-multilingual-mpnet-base-v2` | `79f23827...` | 768 | 128 | Cosine (Dot product on $L_2$ norm) | `""` | `""` | General multilingual semantic embedding baseline |
+| **Multilingual-E5-Base** | `intfloat/multilingual-e5-base` | `d128750597153bb5987e10b1c3493a34e5a4502a` | 768 | 512 | Cosine (Dot product on $L_2$ norm) | `"query: "` | `"passage: "` | Retrieval-specialized multilingual baseline |
+| **BGE-M3** | `BAAI/bge-m3` | `5617a9f61b028005a4858fdac845db406aefb181` | 1024 | 8192 | Cosine (Dot product on $L_2$ norm) | `""` | `""` | Multilingual dense retrieval / multi-granularity baseline (dense embeddings only) |
+| **Paraphrase-MPNet-Multi** | `sentence-transformers/paraphrase-multilingual-mpnet-base-v2` | `4328cf26390c98c5e3c738b4460a05b95f4911f5` | 768 | 128 | Cosine (Dot product on $L_2$ norm) | `""` | `""` | General multilingual semantic embedding baseline |
+
+> [!NOTE]
+> **Pre-Results Revision Provenance Correction**:
+> During initial pre-execution model loading verification, the originally recorded commit SHA strings were found to be invalid repository revisions. This was discovered at first model loading prior to generating any dense embeddings, rankings, or evaluation metrics. The pre-selected model identities, order, token sequence limits, and embedding architectures were retained; their repository `main` branch heads were resolved and frozen to validated immutable SHAs (`d128750597153bb5987e10b1c3493a34e5a4502a`, `5617a9f61b028005a4858fdac845db406aefb181`, `4328cf26390c98c5e3c738b4460a05b95f4911f5`) prior to experimental execution.
 
 ---
 

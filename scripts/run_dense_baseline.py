@@ -3,9 +3,9 @@
 
 Supports local preflight validation, dry-run testing, as well as cloud GPU execution
 (Google Colab / Kaggle) for the 3 frozen multilingual embedding models:
-1. intfloat/multilingual-e5-base (revision: d7dbd2363595f4e19f7f45c8f85f8c65f97332f1)
-2. BAAI/bge-m3 (revision: 5617a9f61b028005a4858fdac845db4034724a87)
-3. sentence-transformers/paraphrase-multilingual-mpnet-base-v2 (revision: 79f238270bbb1999f3659424750eed546059d18f)
+1. intfloat/multilingual-e5-base (revision: d128750597153bb5987e10b1c3493a34e5a4502a)
+2. BAAI/bge-m3 (revision: 5617a9f61b028005a4858fdac845db406aefb181)
+3. sentence-transformers/paraphrase-multilingual-mpnet-base-v2 (revision: 4328cf26390c98c5e3c738b4460a05b95f4911f5)
 
 Cloud Execution Quickstart (Google Colab / Kaggle GPU):
 -------------------------------------------------------
