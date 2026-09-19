@@ -24,6 +24,13 @@ from app.schemas.benchmark import (
     BenchmarkScript,
     EvidenceSpan,
 )
+from app.schemas.retrieval import (
+    ConceptRankComparison,
+    MetricBreakdown,
+    RetrievalResultItem,
+    SingleQueryRetrievalRecord,
+    StrategyEvaluationSummary,
+)
 
 __all__ = [
     "HealthResponse",
@@ -45,5 +52,11 @@ __all__ = [
     "BenchmarkQueryType",
     "EvidenceSpan",
     "BenchmarkRecord",
+    "RetrievalResultItem",
+    "SingleQueryRetrievalRecord",
+    "MetricBreakdown",
+    "StrategyEvaluationSummary",
+    "ConceptRankComparison",
 ]
+
 

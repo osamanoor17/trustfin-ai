@@ -1,0 +1,336 @@
+{
+  "experiment_name": "Phase 2B BM25 Sparse Retrieval Baseline",
+  "bm25_parameters": {
+    "k1": 1.5,
+    "b": 0.75,
+    "idf_formula": "smoothed_non_negative_okapi"
+  },
+  "tokenizer": "re.findall(r'[^\\W_]+', text.lower())",
+  "benchmark_file": "data\\benchmarks\\finurdu_pilot_v0_1.jsonl",
+  "benchmark_sha256": "ea2d964656145a6c058fa9239eff6fd324195a34a6dafda68fce293b9d0b61c4",
+  "strategies": [
+    {
+      "chunk_strategy": "page_v1",
+      "total_indexed_chunks": 142,
+      "overall_answerable": {
+        "query_count": 30,
+        "zero_overlap_count": 4,
+        "zero_overlap_pct": 13.33,
+        "hit_at_1": 0.5667,
+        "hit_at_3": 0.8667,
+        "hit_at_5": 0.8667,
+        "hit_at_10": 0.8667,
+        "mrr_at_10": 0.7
+      },
+      "english": {
+        "query_count": 10,
+        "zero_overlap_count": 0,
+        "zero_overlap_pct": 0.0,
+        "hit_at_1": 0.7,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.85
+      },
+      "urdu": {
+        "query_count": 10,
+        "zero_overlap_count": 4,
+        "zero_overlap_pct": 40.0,
+        "hit_at_1": 0.4,
+        "hit_at_3": 0.6,
+        "hit_at_5": 0.6,
+        "hit_at_10": 0.6,
+        "mrr_at_10": 0.4667
+      },
+      "roman_urdu": {
+        "query_count": 10,
+        "zero_overlap_count": 0,
+        "zero_overlap_pct": 0.0,
+        "hit_at_1": 0.6,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.7833
+      },
+      "unanswerable_query_count": 6
+    },
+    {
+      "chunk_strategy": "fixed_300w_50o_v1",
+      "total_indexed_chunks": 199,
+      "overall_answerable": {
+        "query_count": 30,
+        "zero_overlap_count": 4,
+        "zero_overlap_pct": 13.33,
+        "hit_at_1": 0.5333,
+        "hit_at_3": 0.8333,
+        "hit_at_5": 0.8667,
+        "hit_at_10": 0.8667,
+        "mrr_at_10": 0.6844
+      },
+      "english": {
+        "query_count": 10,
+        "zero_overlap_count": 0,
+        "zero_overlap_pct": 0.0,
+        "hit_at_1": 0.6,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.8
+      },
+      "urdu": {
+        "query_count": 10,
+        "zero_overlap_count": 4,
+        "zero_overlap_pct": 40.0,
+        "hit_at_1": 0.4,
+        "hit_at_3": 0.5,
+        "hit_at_5": 0.6,
+        "hit_at_10": 0.6,
+        "mrr_at_10": 0.47
+      },
+      "roman_urdu": {
+        "query_count": 10,
+        "zero_overlap_count": 0,
+        "zero_overlap_pct": 0.0,
+        "hit_at_1": 0.6,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.7833
+      },
+      "unanswerable_query_count": 6
+    },
+    {
+      "chunk_strategy": "page_aware_300w_50o_v1",
+      "total_indexed_chunks": 248,
+      "overall_answerable": {
+        "query_count": 30,
+        "zero_overlap_count": 4,
+        "zero_overlap_pct": 13.33,
+        "hit_at_1": 0.5333,
+        "hit_at_3": 0.8333,
+        "hit_at_5": 0.8667,
+        "hit_at_10": 0.8667,
+        "mrr_at_10": 0.6789
+      },
+      "english": {
+        "query_count": 10,
+        "zero_overlap_count": 0,
+        "zero_overlap_pct": 0.0,
+        "hit_at_1": 0.6,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.7833
+      },
+      "urdu": {
+        "query_count": 10,
+        "zero_overlap_count": 4,
+        "zero_overlap_pct": 40.0,
+        "hit_at_1": 0.3,
+        "hit_at_3": 0.5,
+        "hit_at_5": 0.6,
+        "hit_at_10": 0.6,
+        "mrr_at_10": 0.42
+      },
+      "roman_urdu": {
+        "query_count": 10,
+        "zero_overlap_count": 0,
+        "zero_overlap_pct": 0.0,
+        "hit_at_1": 0.7,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.8333
+      },
+      "unanswerable_query_count": 6
+    }
+  ],
+  "concept_alignments": {
+    "page_v1": [
+      {
+        "concept_id": "ASAAN_ACCOUNT_CREDIT_BALANCE_LIMIT_001",
+        "english_rank": 2,
+        "urdu_rank": null,
+        "roman_urdu_rank": 2
+      },
+      {
+        "concept_id": "CONSUMER_COMPLAINT_MAJOR_TAT_001",
+        "english_rank": 1,
+        "urdu_rank": 1,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "CUSTOMER_ONBOARDING_FICTITIOUS_ACCOUNTS_001",
+        "english_rank": 1,
+        "urdu_rank": null,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "CUSTOMER_ONBOARDING_STANDARDIZED_FORM_001",
+        "english_rank": 1,
+        "urdu_rank": null,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "DIGITAL_BANK_CAR_REQUIREMENT_001",
+        "english_rank": 2,
+        "urdu_rank": 3,
+        "roman_urdu_rank": 2
+      },
+      {
+        "concept_id": "DIGITAL_BANK_MINIMUM_CAPITAL_001",
+        "english_rank": 1,
+        "urdu_rank": 1,
+        "roman_urdu_rank": 3
+      },
+      {
+        "concept_id": "DIGITAL_BANK_PILOT_DEPOSIT_CAP_001",
+        "english_rank": 2,
+        "urdu_rank": null,
+        "roman_urdu_rank": 2
+      },
+      {
+        "concept_id": "DIGITAL_ONBOARDING_NON_RESIDENTS_001",
+        "english_rank": 1,
+        "urdu_rank": 1,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "KEY_FACT_STATEMENT_REQUIREMENT_001",
+        "english_rank": 1,
+        "urdu_rank": 1,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "THIRD_PARTY_KYC_RELIANCE_ROSHAN_DIGITAL_001",
+        "english_rank": 1,
+        "urdu_rank": 3,
+        "roman_urdu_rank": 1
+      }
+    ],
+    "fixed_300w_50o_v1": [
+      {
+        "concept_id": "ASAAN_ACCOUNT_CREDIT_BALANCE_LIMIT_001",
+        "english_rank": 2,
+        "urdu_rank": null,
+        "roman_urdu_rank": 2
+      },
+      {
+        "concept_id": "CONSUMER_COMPLAINT_MAJOR_TAT_001",
+        "english_rank": 1,
+        "urdu_rank": 1,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "CUSTOMER_ONBOARDING_FICTITIOUS_ACCOUNTS_001",
+        "english_rank": 1,
+        "urdu_rank": null,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "CUSTOMER_ONBOARDING_STANDARDIZED_FORM_001",
+        "english_rank": 1,
+        "urdu_rank": null,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "DIGITAL_BANK_CAR_REQUIREMENT_001",
+        "english_rank": 2,
+        "urdu_rank": 2,
+        "roman_urdu_rank": 2
+      },
+      {
+        "concept_id": "DIGITAL_BANK_MINIMUM_CAPITAL_001",
+        "english_rank": 2,
+        "urdu_rank": 1,
+        "roman_urdu_rank": 3
+      },
+      {
+        "concept_id": "DIGITAL_BANK_PILOT_DEPOSIT_CAP_001",
+        "english_rank": 2,
+        "urdu_rank": null,
+        "roman_urdu_rank": 2
+      },
+      {
+        "concept_id": "DIGITAL_ONBOARDING_NON_RESIDENTS_001",
+        "english_rank": 1,
+        "urdu_rank": 1,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "KEY_FACT_STATEMENT_REQUIREMENT_001",
+        "english_rank": 1,
+        "urdu_rank": 1,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "THIRD_PARTY_KYC_RELIANCE_ROSHAN_DIGITAL_001",
+        "english_rank": 1,
+        "urdu_rank": 5,
+        "roman_urdu_rank": 1
+      }
+    ],
+    "page_aware_300w_50o_v1": [
+      {
+        "concept_id": "ASAAN_ACCOUNT_CREDIT_BALANCE_LIMIT_001",
+        "english_rank": 2,
+        "urdu_rank": null,
+        "roman_urdu_rank": 2
+      },
+      {
+        "concept_id": "CONSUMER_COMPLAINT_MAJOR_TAT_001",
+        "english_rank": 1,
+        "urdu_rank": 1,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "CUSTOMER_ONBOARDING_FICTITIOUS_ACCOUNTS_001",
+        "english_rank": 1,
+        "urdu_rank": null,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "CUSTOMER_ONBOARDING_STANDARDIZED_FORM_001",
+        "english_rank": 1,
+        "urdu_rank": null,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "DIGITAL_BANK_CAR_REQUIREMENT_001",
+        "english_rank": 2,
+        "urdu_rank": 2,
+        "roman_urdu_rank": 2
+      },
+      {
+        "concept_id": "DIGITAL_BANK_MINIMUM_CAPITAL_001",
+        "english_rank": 2,
+        "urdu_rank": 2,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "DIGITAL_BANK_PILOT_DEPOSIT_CAP_001",
+        "english_rank": 3,
+        "urdu_rank": null,
+        "roman_urdu_rank": 3
+      },
+      {
+        "concept_id": "DIGITAL_ONBOARDING_NON_RESIDENTS_001",
+        "english_rank": 1,
+        "urdu_rank": 1,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "KEY_FACT_STATEMENT_REQUIREMENT_001",
+        "english_rank": 1,
+        "urdu_rank": 1,
+        "roman_urdu_rank": 1
+      },
+      {
+        "concept_id": "THIRD_PARTY_KYC_RELIANCE_ROSHAN_DIGITAL_001",
+        "english_rank": 1,
+        "urdu_rank": 5,
+        "roman_urdu_rank": 1
+      }
+    ]
+  }
+}

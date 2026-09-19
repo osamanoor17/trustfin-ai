@@ -109,3 +109,5 @@ research/experiments/*
 !research/experiments/.gitkeep
 research/results/*
 !research/results/.gitkeep
+!research/results/bm25/
+!research/results/bm25/*

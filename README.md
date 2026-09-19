@@ -4,7 +4,7 @@
 [![Python: 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)]()
-[![Status: Phase 2A — Multilingual Retrieval Benchmark Foundation](https://img.shields.io/badge/Status-Phase%202A%20%E2%80%94%20Multilingual%20Retrieval%20Benchmark%20Foundation-informational.svg)]()
+[![Status: Phase 2B — BM25 Sparse Retrieval Baseline](https://img.shields.io/badge/Status-Phase%202B%20%E2%80%94%20BM25%20Sparse%20Retrieval%20Baseline-informational.svg)]()
 
 TrustFin AI is an open-source research project investigating **trustworthy multilingual Retrieval-Augmented Generation (RAG)** for financial, banking, and regulatory documents, initially focused on **English**, **Urdu**, and **Roman Urdu**.
 
@@ -22,9 +22,10 @@ This repository is **not** a generic consumer chatbot wrapper. It is designed as
 - **Phase 1C — Document Parsing & Normalization:** **Complete** (PyMuPDF page-aware extraction, conservative normalization, 142 pages extracted across 4 trusted SBP pilot documents, reproduciblity manifest).
 - **Phase 1D — Chunking & Provenance Design:** **Complete** (Experimental page, fixed-window, and page-aware window chunking variants, strict provenance schemas, coverage validation, reproducibility manifest).
 - **Phase 2A — Multilingual Retrieval Benchmark Foundation:** **Complete** (FinUrdu pilot benchmark v0.1: 12 concepts, 36 multilingual query records across EN/UR/RU, Pydantic schemas, verbatim evidence validation, dataset card, specification, and unit test suite).
+- **Phase 2B — BM25 Sparse Retrieval Baseline:** **Complete** (Pure-Python Okapi BM25 engine, evaluation across `page_v1`, `fixed_300w_50o_v1`, and `page_aware_300w_50o_v1`, Hit@K and MRR@10 metrics, zero-overlap analysis, concept alignment, deterministic artifacts, 78 pytest tests).
 
 > [!NOTE]
-> *Corpus design, metadata schemas, source registry, acquisition pipeline, document normalization, chunking variants, and the FinUrdu pilot retrieval benchmark are formally established. Retrieval experiments (BM25, dense indices), vector databases, embeddings, and LLM calls are deferred to subsequent research phases.*
+> *Corpus design, metadata schemas, source registry, acquisition pipeline, document normalization, chunking variants, FinUrdu pilot retrieval benchmark, and the BM25 sparse retrieval baseline are formally established. Dense embeddings, vector databases, hybrid retrieval, reranking, and LLM calls are deferred to subsequent research phases.*
 
 ---
 
