@@ -511,7 +511,7 @@ def run_chunking_pipeline() -> Tuple[Dict[str, List[ChunkRecord]], List[Chunking
     assert validate_strategy_coverage(pages_by_doc, chunks_page, "page_v1"), "Coverage validation failed for page_v1!"
 
     out_path_page = CHUNKS_DIR / "page_v1.jsonl"
-    with open(out_path_page, "w", encoding="utf-8") as f:
+    with open(out_path_page, "w", encoding="utf-8", newline="\n") as f:
         for c in chunks_page:
             f.write(c.model_dump_json() + "\n")
 
@@ -535,7 +535,7 @@ def run_chunking_pipeline() -> Tuple[Dict[str, List[ChunkRecord]], List[Chunking
     assert validate_strategy_coverage(pages_by_doc, chunks_fixed, "fixed_300w_50o_v1"), "Coverage validation failed for fixed_300w_50o_v1!"
 
     out_path_fixed = CHUNKS_DIR / "fixed_300w_50o_v1.jsonl"
-    with open(out_path_fixed, "w", encoding="utf-8") as f:
+    with open(out_path_fixed, "w", encoding="utf-8", newline="\n") as f:
         for c in chunks_fixed:
             f.write(c.model_dump_json() + "\n")
 
@@ -559,7 +559,7 @@ def run_chunking_pipeline() -> Tuple[Dict[str, List[ChunkRecord]], List[Chunking
     assert validate_strategy_coverage(pages_by_doc, chunks_aware, "page_aware_300w_50o_v1"), "Coverage validation failed for page_aware_300w_50o_v1!"
 
     out_path_aware = CHUNKS_DIR / "page_aware_300w_50o_v1.jsonl"
-    with open(out_path_aware, "w", encoding="utf-8") as f:
+    with open(out_path_aware, "w", encoding="utf-8", newline="\n") as f:
         for c in chunks_aware:
             f.write(c.model_dump_json() + "\n")
 
@@ -574,7 +574,7 @@ def run_chunking_pipeline() -> Tuple[Dict[str, List[ChunkRecord]], List[Chunking
     logger.info(f"Strategy page_aware_300w_50o_v1 complete: {len(chunks_aware)} chunks.")
 
     # Write overall chunking manifest
-    with open(CHUNKING_MANIFEST_PATH, "w", encoding="utf-8") as f:
+    with open(CHUNKING_MANIFEST_PATH, "w", encoding="utf-8", newline="\n") as f:
         for entry in manifest_entries:
             f.write(entry.model_dump_json() + "\n")
 

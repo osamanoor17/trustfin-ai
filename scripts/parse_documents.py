@@ -319,13 +319,13 @@ def run_parsing_pipeline() -> Tuple[List[ProcessedPage], List[ProcessedDocumentM
     # Sort all pages deterministically (document_id, page_number)
     all_pages.sort(key=lambda p: (p.document_id, p.page_number))
 
-    # Write processed JSONL corpus
-    with open(PROCESSED_PAGE_CORPUS_PATH, "w", encoding="utf-8") as f:
+    # Write processed JSONL corpus with explicit LF line endings
+    with open(PROCESSED_PAGE_CORPUS_PATH, "w", encoding="utf-8", newline="\n") as f:
         for page in all_pages:
             f.write(page.model_dump_json() + "\n")
 
-    # Write processed manifest JSONL
-    with open(PROCESSED_MANIFEST_PATH, "w", encoding="utf-8") as f:
+    # Write processed manifest JSONL with explicit LF line endings
+    with open(PROCESSED_MANIFEST_PATH, "w", encoding="utf-8", newline="\n") as f:
         for entry in manifest_entries:
             f.write(entry.model_dump_json() + "\n")
 

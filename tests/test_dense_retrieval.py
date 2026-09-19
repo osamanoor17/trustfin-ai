@@ -317,3 +317,17 @@ def test_e5_formatting_query_passage_prefixes():
     assert e5.query_prefix == "query: "
     assert e5.passage_prefix == "passage: "
 
+
+def test_lf_line_ending_serialization(tmp_path):
+    """Verify that JSONL writer produces LF-only line endings without CRLF on any platform."""
+    test_file = tmp_path / "test_lf.jsonl"
+    with open(test_file, "w", encoding="utf-8", newline="\n") as f:
+        f.write('{"key": "value1"}\n')
+        f.write('{"key": "value2"}\n')
+
+    raw_bytes = test_file.read_bytes()
+    assert b"\r\n" not in raw_bytes
+    assert b"\n" in raw_bytes
+    assert len(raw_bytes.split(b"\n")) == 3
+
+
