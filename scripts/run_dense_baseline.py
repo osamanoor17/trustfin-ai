@@ -59,23 +59,23 @@ from app.services.dense_retrieval import (
 EXPECTED_SHA256_HASHES = {
     "benchmark": (
         Path("data/benchmarks/finurdu_pilot_v0_1.jsonl"),
-        "ea2d964656145a6c058fa9239eff6fd324195a34a6dafda68fce293b9d0b61c4",
+        "df3f6d0c807b7425ac3ffa3efb0ebc1070089ebd41f5cc00f9e423659554c82f",
     ),
     "source_pages": (
         Path("data/processed/sbp/sbp_pages.jsonl"),
-        "086af1f787c3bb62fdc1b69af47265502da006f23d8fff19445719c75f2d40a1",
+        "c8f1d9626a5259dc8611abbd6c9460aad12e4744786753b41bfee713e5c93b19",
     ),
     "page_v1": (
         Path("data/processed/sbp/chunks/page_v1.jsonl"),
-        "74062cb22bffff87995bbb0d247c37ff55caec89e7877998ba0aac07358be3e8",
+        "eede06746047041ada367d8cd72bf9f38779a52a9a7ecd9226c72b1e612bd740",
     ),
     "fixed_300w_50o_v1": (
         Path("data/processed/sbp/chunks/fixed_300w_50o_v1.jsonl"),
-        "2f107d2c63f7b5be5ff99741d1f017639ea6fcd26f3977c56b7f7ceeced7803d",
+        "c7729aa964edad1f7c080a2d253454329242e151df9e8e6658c151f7e237f873",
     ),
     "page_aware_300w_50o_v1": (
         Path("data/processed/sbp/chunks/page_aware_300w_50o_v1.jsonl"),
-        "96ed48beb00ae44fc05b2541f1f4e5d83f8cca305f7adcb4d538599e183d15f6",
+        "789b83cb788473f8e6a9a1ba0af991538bf1f2a8f8202665fd53d35c58d04930",
     ),
 }
 
@@ -92,20 +92,24 @@ FROZEN_BM25_SUMMARY_PATH = Path("research/results/bm25/bm25_summary.json")
 FROZEN_BM25_QUERIES_PATH = Path("research/results/bm25/bm25_query_results.jsonl")
 
 
-def compute_sha256(file_path: Path) -> str:
-    """Compute lowercase 64-character SHA-256 digest of a local file."""
-    sha256_hash = hashlib.sha256()
+def compute_canonical_text_sha256(file_path: Path) -> str:
+    """Compute lowercase 64-character SHA-256 digest of a text file using canonical LF line endings."""
     with open(file_path, "rb") as f:
-        for byte_block in iter(lambda: f.read(65536), b""):
-            sha256_hash.update(byte_block)
-    return sha256_hash.hexdigest().lower()
+        content = f.read()
+    content_lf = content.replace(b"\r\n", b"\n")
+    return hashlib.sha256(content_lf).hexdigest().lower()
+
+
+def compute_sha256(file_path: Path) -> str:
+    """Compute canonical LF SHA-256 digest of a local text file."""
+    return compute_canonical_text_sha256(file_path)
 
 
 def verify_sha256_hash(file_path: Path, expected_hash: str) -> None:
-    """Verify SHA-256 hash of an input file."""
+    """Verify SHA-256 hash of an input file using canonical text newline normalization."""
     if not file_path.exists():
         raise FileNotFoundError(f"Required file not found: {file_path}")
-    actual_hash = compute_sha256(file_path)
+    actual_hash = compute_canonical_text_sha256(file_path)
     if actual_hash != expected_hash.lower():
         raise ValueError(
             f"SHA-256 mismatch for {file_path}.\n"

@@ -331,3 +331,66 @@ def test_lf_line_ending_serialization(tmp_path):
     assert len(raw_bytes.split(b"\n")) == 3
 
 
+def test_canonical_text_sha256_lf_crlf_equivalence(tmp_path):
+    """Verify that equivalent LF and CRLF textual content canonicalizes to identical SHA-256 hash."""
+    from scripts.run_dense_baseline import compute_canonical_text_sha256
+
+    lf_file = tmp_path / "content_lf.jsonl"
+    crlf_file = tmp_path / "content_crlf.jsonl"
+
+    text_content = '{"id": 1, "text": "hello"}\n{"id": 2, "text": "world"}\n'
+    lf_file.write_bytes(text_content.encode("utf-8"))
+    crlf_file.write_bytes(text_content.replace("\n", "\r\n").encode("utf-8"))
+
+    sha_lf = compute_canonical_text_sha256(lf_file)
+    sha_crlf = compute_canonical_text_sha256(crlf_file)
+
+    assert sha_lf == sha_crlf
+    assert sha_lf == "b8b683696e6e48bc5a2aee89ed6e129625670b374d11fd25de00c04d58998398"
+
+
+def test_canonical_lf_output_determinism(tmp_path):
+    """Verify that canonical LF text writing remains 100% deterministic across multiple runs."""
+    import json
+
+    test_file = tmp_path / "deterministic_lf.jsonl"
+    records = [{"item": 1}, {"item": 2}]
+
+    for _ in range(2):
+        with open(test_file, "w", encoding="utf-8", newline="\n") as f:
+            for r in records:
+                f.write(json.dumps(r) + "\n")
+
+        raw_bytes = test_file.read_bytes()
+        assert b"\r\n" not in raw_bytes
+        assert b"\n" in raw_bytes
+
+
+def test_binary_raw_pdf_hashing_remains_byte_exact(tmp_path):
+    """Verify binary/raw PDF hashing remains byte-exact and is NOT newline-normalized."""
+    import hashlib
+    from scripts.parse_documents import compute_sha256 as compute_binary_sha256
+
+    binary_file = tmp_path / "sample_raw.pdf"
+    raw_pdf_bytes = b"%PDF-1.4\r\nsome binary stream data \r\n%%EOF"
+    binary_file.write_bytes(raw_pdf_bytes)
+
+    expected_raw_sha = hashlib.sha256(raw_pdf_bytes).hexdigest().lower()
+    actual_sha = compute_binary_sha256(binary_file)
+
+    assert actual_sha == expected_raw_sha
+
+
+def test_preflight_fails_closed_on_content_change(tmp_path):
+    """Verify preflight SHA-256 validation fails closed when genuine text content changes."""
+    from scripts.run_dense_baseline import verify_sha256_hash
+
+    modified_file = tmp_path / "modified_benchmark.jsonl"
+    modified_file.write_bytes(b'{"id": "modified_content"}\n')
+
+    frozen_expected_sha = "df3f6d0c807b7425ac3ffa3efb0ebc1070089ebd41f5cc00f9e423659554c82f"
+    with pytest.raises(ValueError, match="SHA-256 mismatch"):
+        verify_sha256_hash(modified_file, frozen_expected_sha)
+
+
+

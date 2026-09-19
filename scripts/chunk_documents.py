@@ -32,19 +32,23 @@ logger = logging.getLogger("trustfin.chunker")
 
 # Inputs and Outputs
 INPUT_PAGE_CORPUS_PATH = PROJECT_ROOT / "data" / "processed" / "sbp" / "sbp_pages.jsonl"
-EXPECTED_INPUT_SHA256 = "086af1f787c3bb62fdc1b69af47265502da006f23d8fff19445719c75f2d40a1"
+EXPECTED_INPUT_SHA256 = "c8f1d9626a5259dc8611abbd6c9460aad12e4744786753b41bfee713e5c93b19"
 
 CHUNKS_DIR = PROJECT_ROOT / "data" / "processed" / "sbp" / "chunks"
 CHUNKING_MANIFEST_PATH = PROJECT_ROOT / "data" / "manifest" / "sbp_chunking_manifest.jsonl"
 
 
-def compute_sha256(file_path: Path) -> str:
-    """Compute lowercase 64-character SHA-256 digest of a local file."""
-    hasher = hashlib.sha256()
+def compute_canonical_text_sha256(file_path: Path) -> str:
+    """Compute lowercase 64-character SHA-256 digest of a text file using canonical LF line endings."""
     with open(file_path, "rb") as f:
-        for chunk in iter(lambda: f.read(65536), b""):
-            hasher.update(chunk)
-    return hasher.hexdigest().lower()
+        content = f.read()
+    content_lf = content.replace(b"\r\n", b"\n")
+    return hashlib.sha256(content_lf).hexdigest().lower()
+
+
+def compute_sha256(file_path: Path) -> str:
+    """Compute canonical LF SHA-256 digest of a local text file."""
+    return compute_canonical_text_sha256(file_path)
 
 
 def tokenize_words(text: str) -> List[str]:

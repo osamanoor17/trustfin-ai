@@ -60,12 +60,10 @@ def validate_benchmark_file(
     if not benchmark_path.exists():
         return False, [f"Benchmark file not found: {benchmark_path}"], ""
 
-    # Compute SHA-256
-    sha256_hash = hashlib.sha256()
+    # Compute canonical LF SHA-256
     with open(benchmark_path, "rb") as f:
-        for byte_block in iter(lambda: f.read(65536), b""):
-            sha256_hash.update(byte_block)
-    benchmark_sha256 = sha256_hash.hexdigest()
+        content = f.read()
+    benchmark_sha256 = hashlib.sha256(content.replace(b"\r\n", b"\n")).hexdigest()
 
     pages = load_normalized_pages(pages_path)
     
