@@ -397,7 +397,8 @@ def execute_real_dense_experiment(device: str) -> Tuple[Dict[str, Any], List[Dic
     return deterministic_summary, [q.model_dump() for q in all_query_records], runtime_metadata
 
 
-def main():
+def parse_args(args: List[str] = None) -> argparse.Namespace:
+    """Parse command line arguments for the dense baseline runner."""
     parser = argparse.ArgumentParser(
         description="Phase 2C Multilingual Dense Retrieval Baseline Experiment Runner"
     )
@@ -421,15 +422,18 @@ def main():
         default="cpu",
         help="Compute device e.g. cuda or cpu (default: cpu)",
     )
+    return parser.parse_args(args)
 
-    args = parser.parse_args()
+
+def main(sys_args: List[str] = None):
+    args = parse_args(sys_args)
 
     # Default action if no flags passed: run preflight checks
-    if args.preflight or (not args.execute and not args.dry-run):
+    if args.preflight or (not args.execute and not args.dry_run):
         run_preflight_checks()
         sys.exit(0)
 
-    if args.dry-run:
+    if args.dry_run:
         run_preflight_checks()
         print("Dry-run synthetic check complete.")
         sys.exit(0)

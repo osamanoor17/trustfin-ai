@@ -393,4 +393,68 @@ def test_preflight_fails_closed_on_content_change(tmp_path):
         verify_sha256_hash(modified_file, frozen_expected_sha)
 
 
+def test_cli_argument_parsing_options():
+    """Verify CLI argument parsing handles --execute, --device, and --dry-run cleanly without AttributeError."""
+    from scripts.run_dense_baseline import parse_args
+
+    args_exec = parse_args(["--execute", "--device", "cuda"])
+    assert args_exec.execute is True
+    assert args_exec.dry_run is False
+    assert args_exec.device == "cuda"
+    assert args_exec.preflight is False
+
+    args_dry = parse_args(["--dry-run"])
+    assert args_dry.dry_run is True
+    assert args_dry.execute is False
+    assert args_dry.device == "cpu"
+
+    args_default = parse_args([])
+    assert args_default.execute is False
+    assert args_default.dry_run is False
+    assert args_default.preflight is False
+
+
+def test_cli_main_dry_run_execution_path():
+    """Verify main(['--dry-run']) control flow executes preflight and exits cleanly without error."""
+    from scripts.run_dense_baseline import main
+
+    with pytest.raises(SystemExit) as exc_info:
+        main(["--dry-run"])
+
+    assert exc_info.value.code == 0
+
+
+def test_cli_main_execute_control_flow(monkeypatch):
+    """Verify main(['--execute', '--device', 'cuda']) invokes execute_real_dense_experiment with correct device."""
+    from unittest.mock import MagicMock
+    import scripts.run_dense_baseline as runner
+
+    mock_execute = MagicMock(return_value=({}, [], {}))
+    mock_preflight = MagicMock()
+    mock_compute_sha = MagicMock(return_value="mock_sha256")
+
+    monkeypatch.setattr(runner, "run_preflight_checks", mock_preflight)
+    monkeypatch.setattr(runner, "execute_real_dense_experiment", mock_execute)
+    monkeypatch.setattr(runner, "compute_sha256", mock_compute_sha)
+
+    # Prevent actual writing to disk during mock control flow test
+    import builtins
+    original_open = builtins.open
+
+    def dummy_open(file, mode="r", *args, **kwargs):
+        if "w" in mode:
+            from io import StringIO
+            return StringIO()
+        return original_open(file, mode, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "open", dummy_open)
+
+    runner.main(["--execute", "--device", "cuda"])
+
+    assert mock_preflight.call_count >= 1
+    assert mock_execute.call_count == 2
+    mock_execute.assert_called_with("cuda")
+
+
+
 
