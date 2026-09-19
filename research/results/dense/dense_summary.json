@@ -1,0 +1,456 @@
+{
+  "experiment_name": "Phase 2C Multilingual Dense Retrieval Baseline",
+  "frozen_bm25_commit": "419dea62d9e6181eee42b6c45a1d92ddd15ffd43",
+  "framework_commit": "b8190e0422cfa2b8b2ff0a31a63911c22e620883",
+  "models": [
+    {
+      "model_id": "intfloat/multilingual-e5-base",
+      "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+      "embedding_dimension": 768,
+      "max_sequence_length": 512,
+      "normalized": true,
+      "similarity_function": "cosine_dot_product",
+      "query_prefix": "query: ",
+      "passage_prefix": "passage: ",
+      "role_description": "retrieval-specialized multilingual baseline"
+    },
+    {
+      "model_id": "BAAI/bge-m3",
+      "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "embedding_dimension": 1024,
+      "max_sequence_length": 8192,
+      "normalized": true,
+      "similarity_function": "cosine_dot_product",
+      "query_prefix": "",
+      "passage_prefix": "",
+      "role_description": "multilingual dense retrieval / multi-granularity baseline (dense embeddings only)"
+    },
+    {
+      "model_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+      "model_revision": "4328cf26390c98c5e3c738b4460a05b95f4911f5",
+      "embedding_dimension": 768,
+      "max_sequence_length": 128,
+      "normalized": true,
+      "similarity_function": "cosine_dot_product",
+      "query_prefix": "",
+      "passage_prefix": "",
+      "role_description": "general multilingual semantic embedding baseline"
+    }
+  ],
+  "summaries": [
+    {
+      "model_id": "intfloat/multilingual-e5-base",
+      "chunk_strategy": "page_v1",
+      "total_indexed_chunks": 142,
+      "truncation_stats": {
+        "model_id": "intfloat/multilingual-e5-base",
+        "chunk_strategy": "page_v1",
+        "max_sequence_length": 512,
+        "total_chunks": 142,
+        "truncated_chunk_count": 90,
+        "truncated_chunk_pct": 63.38
+      },
+      "overall_answerable": {
+        "query_count": 30,
+        "hit_at_1": 0.6333,
+        "hit_at_3": 0.8667,
+        "hit_at_5": 0.9333,
+        "hit_at_10": 0.9333,
+        "mrr_at_10": 0.7444
+      },
+      "english": {
+        "query_count": 10,
+        "hit_at_1": 0.8,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.8833
+      },
+      "urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.4,
+        "hit_at_3": 0.7,
+        "hit_at_5": 0.8,
+        "hit_at_10": 0.8,
+        "mrr_at_10": 0.5417
+      },
+      "roman_urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.7,
+        "hit_at_3": 0.9,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.8083
+      },
+      "unanswerable_query_count": 6
+    },
+    {
+      "model_id": "intfloat/multilingual-e5-base",
+      "chunk_strategy": "fixed_300w_50o_v1",
+      "total_indexed_chunks": 199,
+      "truncation_stats": {
+        "model_id": "intfloat/multilingual-e5-base",
+        "chunk_strategy": "fixed_300w_50o_v1",
+        "max_sequence_length": 512,
+        "total_chunks": 199,
+        "truncated_chunk_count": 13,
+        "truncated_chunk_pct": 6.53
+      },
+      "overall_answerable": {
+        "query_count": 30,
+        "hit_at_1": 0.7,
+        "hit_at_3": 0.9333,
+        "hit_at_5": 0.9667,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.8287
+      },
+      "english": {
+        "query_count": 10,
+        "hit_at_1": 0.8,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.9
+      },
+      "urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.6,
+        "hit_at_3": 0.8,
+        "hit_at_5": 0.9,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.7361
+      },
+      "roman_urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.7,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.85
+      },
+      "unanswerable_query_count": 6
+    },
+    {
+      "model_id": "intfloat/multilingual-e5-base",
+      "chunk_strategy": "page_aware_300w_50o_v1",
+      "total_indexed_chunks": 248,
+      "truncation_stats": {
+        "model_id": "intfloat/multilingual-e5-base",
+        "chunk_strategy": "page_aware_300w_50o_v1",
+        "max_sequence_length": 512,
+        "total_chunks": 248,
+        "truncated_chunk_count": 13,
+        "truncated_chunk_pct": 5.24
+      },
+      "overall_answerable": {
+        "query_count": 30,
+        "hit_at_1": 0.6667,
+        "hit_at_3": 0.8,
+        "hit_at_5": 0.8667,
+        "hit_at_10": 0.9,
+        "mrr_at_10": 0.7428
+      },
+      "english": {
+        "query_count": 10,
+        "hit_at_1": 0.8,
+        "hit_at_3": 0.9,
+        "hit_at_5": 0.9,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.85
+      },
+      "urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.5,
+        "hit_at_3": 0.6,
+        "hit_at_5": 0.7,
+        "hit_at_10": 0.7,
+        "mrr_at_10": 0.5583
+      },
+      "roman_urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.7,
+        "hit_at_3": 0.9,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.82
+      },
+      "unanswerable_query_count": 6
+    },
+    {
+      "model_id": "BAAI/bge-m3",
+      "chunk_strategy": "page_v1",
+      "total_indexed_chunks": 142,
+      "truncation_stats": {
+        "model_id": "BAAI/bge-m3",
+        "chunk_strategy": "page_v1",
+        "max_sequence_length": 8192,
+        "total_chunks": 142,
+        "truncated_chunk_count": 0,
+        "truncated_chunk_pct": 0.0
+      },
+      "overall_answerable": {
+        "query_count": 30,
+        "hit_at_1": 0.6,
+        "hit_at_3": 0.9,
+        "hit_at_5": 0.9667,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.7548
+      },
+      "english": {
+        "query_count": 10,
+        "hit_at_1": 0.6,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.7833
+      },
+      "urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.6,
+        "hit_at_3": 0.8,
+        "hit_at_5": 0.9,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.7226
+      },
+      "roman_urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.6,
+        "hit_at_3": 0.9,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.7583
+      },
+      "unanswerable_query_count": 6
+    },
+    {
+      "model_id": "BAAI/bge-m3",
+      "chunk_strategy": "fixed_300w_50o_v1",
+      "total_indexed_chunks": 199,
+      "truncation_stats": {
+        "model_id": "BAAI/bge-m3",
+        "chunk_strategy": "fixed_300w_50o_v1",
+        "max_sequence_length": 8192,
+        "total_chunks": 199,
+        "truncated_chunk_count": 0,
+        "truncated_chunk_pct": 0.0
+      },
+      "overall_answerable": {
+        "query_count": 30,
+        "hit_at_1": 0.8,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.8778
+      },
+      "english": {
+        "query_count": 10,
+        "hit_at_1": 0.8,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.8833
+      },
+      "urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.7,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.8167
+      },
+      "roman_urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.9,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.9333
+      },
+      "unanswerable_query_count": 6
+    },
+    {
+      "model_id": "BAAI/bge-m3",
+      "chunk_strategy": "page_aware_300w_50o_v1",
+      "total_indexed_chunks": 248,
+      "truncation_stats": {
+        "model_id": "BAAI/bge-m3",
+        "chunk_strategy": "page_aware_300w_50o_v1",
+        "max_sequence_length": 8192,
+        "total_chunks": 248,
+        "truncated_chunk_count": 0,
+        "truncated_chunk_pct": 0.0
+      },
+      "overall_answerable": {
+        "query_count": 30,
+        "hit_at_1": 0.5,
+        "hit_at_3": 0.9333,
+        "hit_at_5": 0.9333,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.7048
+      },
+      "english": {
+        "query_count": 10,
+        "hit_at_1": 0.5,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.7333
+      },
+      "urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.5,
+        "hit_at_3": 0.8,
+        "hit_at_5": 0.8,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.681
+      },
+      "roman_urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.5,
+        "hit_at_3": 1.0,
+        "hit_at_5": 1.0,
+        "hit_at_10": 1.0,
+        "mrr_at_10": 0.7
+      },
+      "unanswerable_query_count": 6
+    },
+    {
+      "model_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+      "chunk_strategy": "page_v1",
+      "total_indexed_chunks": 142,
+      "truncation_stats": {
+        "model_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+        "chunk_strategy": "page_v1",
+        "max_sequence_length": 128,
+        "total_chunks": 142,
+        "truncated_chunk_count": 131,
+        "truncated_chunk_pct": 92.25
+      },
+      "overall_answerable": {
+        "query_count": 30,
+        "hit_at_1": 0.3333,
+        "hit_at_3": 0.4,
+        "hit_at_5": 0.5,
+        "hit_at_10": 0.6333,
+        "mrr_at_10": 0.3981
+      },
+      "english": {
+        "query_count": 10,
+        "hit_at_1": 0.4,
+        "hit_at_3": 0.5,
+        "hit_at_5": 0.5,
+        "hit_at_10": 0.7,
+        "mrr_at_10": 0.4625
+      },
+      "urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.3,
+        "hit_at_3": 0.4,
+        "hit_at_5": 0.5,
+        "hit_at_10": 0.5,
+        "mrr_at_10": 0.3533
+      },
+      "roman_urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.3,
+        "hit_at_3": 0.3,
+        "hit_at_5": 0.5,
+        "hit_at_10": 0.7,
+        "mrr_at_10": 0.3783
+      },
+      "unanswerable_query_count": 6
+    },
+    {
+      "model_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+      "chunk_strategy": "fixed_300w_50o_v1",
+      "total_indexed_chunks": 199,
+      "truncation_stats": {
+        "model_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+        "chunk_strategy": "fixed_300w_50o_v1",
+        "max_sequence_length": 128,
+        "total_chunks": 199,
+        "truncated_chunk_count": 199,
+        "truncated_chunk_pct": 100.0
+      },
+      "overall_answerable": {
+        "query_count": 30,
+        "hit_at_1": 0.3333,
+        "hit_at_3": 0.5667,
+        "hit_at_5": 0.5667,
+        "hit_at_10": 0.6,
+        "mrr_at_10": 0.4444
+      },
+      "english": {
+        "query_count": 10,
+        "hit_at_1": 0.4,
+        "hit_at_3": 0.7,
+        "hit_at_5": 0.7,
+        "hit_at_10": 0.7,
+        "mrr_at_10": 0.5333
+      },
+      "urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.3,
+        "hit_at_3": 0.4,
+        "hit_at_5": 0.4,
+        "hit_at_10": 0.5,
+        "mrr_at_10": 0.35
+      },
+      "roman_urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.3,
+        "hit_at_3": 0.6,
+        "hit_at_5": 0.6,
+        "hit_at_10": 0.6,
+        "mrr_at_10": 0.45
+      },
+      "unanswerable_query_count": 6
+    },
+    {
+      "model_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+      "chunk_strategy": "page_aware_300w_50o_v1",
+      "total_indexed_chunks": 248,
+      "truncation_stats": {
+        "model_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+        "chunk_strategy": "page_aware_300w_50o_v1",
+        "max_sequence_length": 128,
+        "total_chunks": 248,
+        "truncated_chunk_count": 235,
+        "truncated_chunk_pct": 94.76
+      },
+      "overall_answerable": {
+        "query_count": 30,
+        "hit_at_1": 0.3333,
+        "hit_at_3": 0.4,
+        "hit_at_5": 0.4667,
+        "hit_at_10": 0.5,
+        "mrr_at_10": 0.3881
+      },
+      "english": {
+        "query_count": 10,
+        "hit_at_1": 0.3,
+        "hit_at_3": 0.5,
+        "hit_at_5": 0.5,
+        "hit_at_10": 0.6,
+        "mrr_at_10": 0.4143
+      },
+      "urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.3,
+        "hit_at_3": 0.3,
+        "hit_at_5": 0.4,
+        "hit_at_10": 0.4,
+        "mrr_at_10": 0.325
+      },
+      "roman_urdu": {
+        "query_count": 10,
+        "hit_at_1": 0.4,
+        "hit_at_3": 0.4,
+        "hit_at_5": 0.5,
+        "hit_at_10": 0.5,
+        "mrr_at_10": 0.425
+      },
+      "unanswerable_query_count": 6
+    }
+  ]
+}

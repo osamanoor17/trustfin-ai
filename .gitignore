@@ -111,3 +111,5 @@ research/results/*
 !research/results/.gitkeep
 !research/results/bm25/
 !research/results/bm25/*
+!research/results/dense/
+!research/results/dense/*
